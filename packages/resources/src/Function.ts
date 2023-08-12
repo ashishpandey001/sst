@@ -70,7 +70,7 @@ export interface FunctionProps
   /**
    * The runtime environment.
    *
-   * @default - Defaults to NODEJS_12_X
+   * @default - Defaults to NODEJS_14_X
    */
   runtime?:
     | "nodejs"
@@ -201,7 +201,7 @@ export class Function extends lambda.Function implements SSTConstruct {
     const srcPath = Function.normalizeSrcPath(props.srcPath || ".");
     const memorySize = props.memorySize || 1024;
     const tracing = props.tracing || lambda.Tracing.ACTIVE;
-    let runtime = props.runtime || lambda.Runtime.NODEJS_12_X;
+    let runtime = props.runtime || lambda.Runtime.NODEJS_14_X;
     let bundle = props.bundle;
     const permissions = props.permissions;
     const isLiveDevEnabled = props.enableLiveDev === false ? false : true;
@@ -304,7 +304,7 @@ export class Function extends lambda.Function implements SSTConstruct {
         super(scope, id, {
           ...props,
           functionName,
-          runtime: isNodeRuntime ? runtime : lambda.Runtime.NODEJS_12_X,
+          runtime: isNodeRuntime ? runtime : lambda.Runtime.NODEJS_14_X,
           tracing,
           timeout,
           memorySize,
@@ -347,7 +347,7 @@ export class Function extends lambda.Function implements SSTConstruct {
       super(scope, id, {
         ...props,
         functionName,
-        runtime: lambda.Runtime.NODEJS_12_X,
+        runtime: lambda.Runtime.NODEJS_14_X,
         handler: "placeholder",
         code: lambda.Code.fromAsset(
           path.resolve(__dirname, "../assets/Function/placeholder-stub")
