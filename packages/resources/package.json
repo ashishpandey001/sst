@@ -10,8 +10,9 @@
     "build:stub": "cd assets/stub && yarn && cd ../.. && node ./bin/create-stub-zip.js",
     "build:rds-migrator": "cd assets/RDS/migrator && yarn && cd ../../.. && node ./bin/copy-rds-migrator.js",
     "build:bridge": "node ./bin/build-bridge-client.js",
+    "build:individual": "tsc --rootDir src --outDir dist",
     "clean": "rm -rf dist",
-    "prepare": "node ./bin/aws-cdk-version-check.js && yarn run build",
+    "prepare": "node ./bin/aws-cdk-version-check.js && yarn run build:individual",
     "jest-clear-cache": "jest --clearCache",
     "test": "jest"
   },
